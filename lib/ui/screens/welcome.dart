@@ -1,3 +1,4 @@
+import 'package:chat_app/ui/screens/register.dart';
 import 'package:chat_app/ui/themes/color.dart';
 import 'package:chat_app/ui/widgets/button.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,7 @@ class WelcomePage extends StatelessWidget {
               text: "Get Started",
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()));
+                    MaterialPageRoute(builder: (context) => const RegisterPage()));
               },
               color: CustomColors.green,
             )),
