@@ -1,13 +1,18 @@
+import 'package:chat_app/services/global.dart';
 import 'package:chat_app/ui/screens/home_screen.dart';
 import 'package:chat_app/ui/themes/color.dart';
 import 'package:chat_app/ui/widgets/button.dart';
+import 'package:chat_app/ui/widgets/register_form.dart';
 import 'package:flutter/material.dart';
+
+import 'package:http/http.dart' as http;
 
 import '../../services/instance.dart';
 
 class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+  LoginForm({super.key, this.username});
 
+  String? username;
   @override
   State<LoginForm> createState() => _LoginFormState();
 }
@@ -31,6 +36,7 @@ class _LoginFormState extends State<LoginForm> {
               child: Column(
                 children: [
                   TextFormField(
+                    initialValue: widget.username ?? "",
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: CustomColors.secondGreen,
@@ -176,22 +182,20 @@ class _LoginFormState extends State<LoginForm> {
         isLoading = true;
       });
 
-      Request.auth_service.login(_email, _username).then((value) {
+      Request.auth_service.login(_username, _password).then((value) {
         setState(() {
           isLoading = false;
         });
 
-        if (value == true) {
+        if (value != null) {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(Request.auth_service.last_errors),
+            backgroundColor: Colors.red,
+          ));
         }
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomeScreen()));
-      }).catchError((error) {
-        print("hello");
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(error.toString()),
-        ));
       });
     }
   }

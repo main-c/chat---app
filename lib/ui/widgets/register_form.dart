@@ -1,6 +1,7 @@
 import 'package:chat_app/services/instance.dart';
 import 'package:chat_app/services/jioni_client.dart';
 import 'package:chat_app/ui/screens/home_screen.dart';
+import 'package:chat_app/ui/screens/login.dart';
 import 'package:chat_app/ui/widgets/button.dart';
 import 'package:flutter/material.dart';
 
@@ -297,15 +298,32 @@ class _RegisterFormState extends State<RegisterForm> {
         setState(() {
           isLoading = false;
         });
-        print(value);
-      }).onError((error, stackTrace) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(error.toString()),
-        ));
+        if (value == true) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => LoginPage(username: _username)));
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(Request.auth_service.last_errors),
+            backgroundColor: Colors.red,
+          ));
+        }
       });
-
-      // Navigator.push(
-      //     context, MaterialPageRoute(builder: (context) => HomeScreen()));
     }
   }
+}
+
+Widget get_snackbar_content(Map<String, dynamic> errors) {
+  List<String> rows = [];
+
+  for (List<dynamic> errs in errors.values) {
+    for (String err in errs) {
+      rows.add(err);
+    }
+  }
+
+  return Text(
+    rows.join("\n"),
+  );
 }

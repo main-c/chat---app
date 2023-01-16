@@ -20,6 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -29,7 +30,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 Navigator.push<void>(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const LoginPage(),
+                    builder: (BuildContext context) => LoginPage(),
                   ),
                 );
               },
@@ -46,7 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Column(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 1.5,
+              height: MediaQuery.of(context).size.height * 1.129,
               width: MediaQuery.of(context).size.width,
               child: Stack(
                 children: <Widget>[
@@ -97,7 +98,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     color: Colors.black,
                                     fontWeight: FontWeight.w400),
                           ),
-                          RegisterForm(),
+                          const RegisterForm(),
                         ],
                       ),
                     ),
