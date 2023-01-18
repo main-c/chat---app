@@ -2,7 +2,7 @@ import 'package:chat_app/models/message_model.dart';
 import 'package:chat_app/ui/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 
-class FavouriteContacts extends StatelessWidget {
+class ActiveContacts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,20 +15,21 @@ class FavouriteContacts extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  'Favourite Contacts',
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blueGrey,
-                    letterSpacing: 1.0,
-                  ),
+                  'Active Contacts',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6
+                      ?.copyWith(fontWeight: FontWeight.w700),
                 ),
-                IconButton(
-                  icon: Icon(Icons.more_horiz),
-                  iconSize: 30.0,
-                  color: Colors.blueGrey,
-                  onPressed: () {},
-                ),
+                TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "See all",
+                      style: Theme.of(context).textTheme.headline6?.copyWith(
+                            fontSize: 16,
+                            color: Colors.blueGrey,
+                          ),
+                    ))
               ],
             ),
           ),

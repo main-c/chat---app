@@ -1,5 +1,6 @@
 import 'package:chat_app/models/message_model.dart';
 import 'package:chat_app/ui/screens/chat_screen.dart';
+import 'package:chat_app/ui/themes/color.dart';
 import 'package:flutter/material.dart';
 
 class RecentChats extends StatelessWidget {
@@ -7,7 +8,7 @@ class RecentChats extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.0),
@@ -15,7 +16,7 @@ class RecentChats extends StatelessWidget {
           ),
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(30.0),
             topRight: Radius.circular(30.0),
           ),
@@ -33,12 +34,14 @@ class RecentChats extends StatelessWidget {
                   ),
                 ),
                 child: Container(
-                  margin: EdgeInsets.only(top: 5.0, bottom: 5.0, right: 20.0),
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                  margin:
+                      const EdgeInsets.only(top: 5.0, bottom: 5.0, right: 20.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 10.0),
                   decoration: BoxDecoration(
-                      color: chat.unread ? Color(0xFFFFEFEE) : Colors.white,
-                      borderRadius: BorderRadius.only(
+                      color:
+                          chat.unread ? CustomColors.secondGreen : Colors.white,
+                      borderRadius: const BorderRadius.only(
                         topRight: Radius.circular(20.0),
                         bottomRight: Radius.circular(20.0),
                       )),
@@ -51,24 +54,24 @@ class RecentChats extends StatelessWidget {
                             radius: 35.0,
                             backgroundImage: AssetImage(chat.sender.imageUrl),
                           ),
-                          SizedBox(width: 10.0),
+                          const SizedBox(width: 10.0),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
                                 chat.sender.name,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.grey,
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(height: 5.0),
+                              const SizedBox(height: 5.0),
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.45,
                                 child: Text(
                                   chat.text,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.blueGrey,
                                     fontSize: 15.0,
                                     fontWeight: FontWeight.w600,
@@ -84,23 +87,23 @@ class RecentChats extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             chat.time,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.grey,
                               fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 5.0),
+                          const SizedBox(height: 5.0),
                           chat.unread
                               ? Container(
                                   width: 40.0,
                                   height: 20.0,
                                   decoration: BoxDecoration(
-                                    color: Theme.of(context).primaryColor,
+                                    color: CustomColors.green,
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                   alignment: Alignment.center,
-                                  child: Text(
+                                  child: const Text(
                                     'NEW',
                                     style: TextStyle(
                                       color: Colors.white,

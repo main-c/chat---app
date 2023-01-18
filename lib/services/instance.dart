@@ -14,7 +14,7 @@ class Request {
     storage = const FlutterSecureStorage();
     _base_url = base_url;
     auth_service = AuthService(base_url);
-    String? auth_key = await storage.read(key: 'auth_key');
+    String? auth_key = await storage.read(key: 'access_token');
     if (auth_key != null) {
       client = ApiClient(base_url: _base_url, key: auth_key);
     } else {
@@ -28,7 +28,7 @@ class Request {
   }
 
   static Future<bool> isAuthenticated() async {
-    final auth_key = await storage.read(key: 'auth_key');
+    final auth_key = await storage.read(key: 'access_token');
     return (auth_key != null && auth_key.isNotEmpty) ? true : false;
   }
 }
