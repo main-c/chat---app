@@ -1,6 +1,6 @@
 # chat_app
 
-A new Flutter project.
+Simple chat app in flutter.
 
 ## Getting Started
 
@@ -14,3 +14,10 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+Screens
+| ![](./images/image2.jpeg) | ![](./images/image1.jpeg) |
+| ------------------------- | ------------------------- |
+| ![](./images/image3.jpeg) | ![](./images/image4.jpeg) |
+
+![](./images/image4.jpeg)
